@@ -24,16 +24,47 @@ class _PostViewScreenState extends State<PostViewScreen> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> icons = [
-      Icon(Icons.add_outlined, color: Theme.of(context).cardColor),
-      Icon(Icons.search, color: Theme.of(context).cardColor),
-      Icon(Icons.notifications_active, color: Theme.of(context).cardColor),
-      Image.asset(
-        "assets/images/model-2911329_1280.jpg",
-        fit: BoxFit.contain,
-        height: 50,
-        width: 50,
+      Icon(Icons.add_outlined, size: 18, color: Theme.of(context).cardColor),
+      Icon(Icons.search, size: 18, color: Theme.of(context).cardColor),
+      Icon(Icons.notifications_active, size: 18, color: Theme.of(context).cardColor),
+      CircleAvatar(
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(50),
+          child: Image.asset(
+            "assets/images/model-2911329_1280.jpg",
+            fit: BoxFit.cover,
+            height: 50,
+            width: 50,
+          ),
+        ),
       ),
-      Image.asset("assets/images/model-2911329_1280.jpg", fit: BoxFit.contain),
+      CircleAvatar(
+          child: ClipRRect(
+              borderRadius: BorderRadius.circular(50),
+              child: Image.asset(
+                "assets/images/model-2911329_1280.jpg",
+                fit: BoxFit.cover,
+                height: 50,
+                width: 50,
+              ))),
+      CircleAvatar(
+          child: ClipRRect(
+              borderRadius: BorderRadius.circular(50),
+              child: Image.asset(
+                "assets/images/model-2911329_1280.jpg",
+                fit: BoxFit.cover,
+                height: 50,
+                width: 50,
+              ))),
+      CircleAvatar(
+          child: ClipRRect(
+              borderRadius: BorderRadius.circular(50),
+              child: Image.asset(
+                "assets/images/model-2911329_1280.jpg",
+                fit: BoxFit.cover,
+                height: 50,
+                width: 50,
+              ))),
       // Icon(Icons.camera_outlined, color: Theme.of(context).cardColor),
       // Icon(Icons.shopping_bag_outlined, color: Theme.of(context).cardColor),
       // Icon(Icons.music_note_outlined, color: Theme.of(context).cardColor),
@@ -57,7 +88,7 @@ class _PostViewScreenState extends State<PostViewScreen> {
               },
             ),
             SizedBox(
-              height: 90.0, // Adjust the height as needed
+              height: 100.0, // Adjust the height as needed
               child: ListView.builder(
                 padding: const EdgeInsets.only(top: 20),
                 scrollDirection: Axis.horizontal,
@@ -159,7 +190,7 @@ class _PostViewScreenState extends State<PostViewScreen> {
             ),
             Positioned(
               top: 380,
-              left: 308,
+              left: 318,
               child: Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: Column(

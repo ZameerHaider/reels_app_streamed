@@ -9,19 +9,24 @@ class StoryContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        margin: const EdgeInsets.only(left: 10),
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          border: GradientBoxBorder(
-            gradient: LinearGradient(
-              colors: [Color.fromARGB(255, 35, 104, 160), Colors.cyan, Color.fromARGB(255, 102, 237, 255)],
+    return Column(
+      children: [
+        Container(
+            margin: const EdgeInsets.only(left: 10, bottom: 10),
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              border: GradientBoxBorder(
+                gradient: LinearGradient(
+                  colors: [Color.fromARGB(255, 35, 104, 160), Colors.cyan, Color.fromARGB(255, 102, 237, 255)],
+                ),
+                width: 2,
+              ),
             ),
-            width: 2,
-          ),
-        ),
-        width: 55.0,
-        height: 55,
-        child: icon != null ? icon! : Center(child: imageUrl));
+            width: 55.0,
+            height: 55,
+            child: icon != null ? icon! : imageUrl),
+        Text('Add Story', style: TextStyle(color: Theme.of(context).cardColor, fontSize: 10))
+      ],
+    );
   }
 }

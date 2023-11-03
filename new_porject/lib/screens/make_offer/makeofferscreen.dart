@@ -72,22 +72,12 @@ class _MakeOfferScreenState extends State<MakeOfferScreen> {
                       height: 25,
                       width: 54,
                       alignment: Alignment.center,
-                      child: Text('Today', style: TextStyle(color: Theme.of(context).cardColor)),
+                      child: const Text('Today', style: TextStyle(fontWeight: FontWeight.w500)),
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: Dimensions.PADDING_SIZE_SMALL,
-                ),
-                Row(
-                  children: [
-                    ChatBubble(
-                      message: 'im interested to buy \n your product with counter offer',
-                      time: '10:30 AM',
-                      isMe: false,
-                    )
-                  ],
-                ),
+                const SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
+                Row(children: [ChatBubble(message: 'im interested to buy \n your product with counter offer', time: '10:30 AM', isMe: false)]),
                 const SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT),
                 Container(
                   decoration: const BoxDecoration(
@@ -207,16 +197,20 @@ class _MakeOfferScreenState extends State<MakeOfferScreen> {
 }
 
 Widget _bottomNavigationWidget(BuildContext context) {
+  bool _keyboardVisible = MediaQuery.of(context).viewInsets.bottom != 0;
   return AnimatedContainer(
     duration: const Duration(milliseconds: 200),
+    margin: EdgeInsets.only(bottom: _keyboardVisible ? 340 : 0),
     height: 80,
     color: const Color.fromRGBO(12, 37, 67, 1),
     child: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
+              style: TextStyle(color: Theme.of(context).cardColor),
               decoration: InputDecoration(
                 border: InputBorder.none, // Remove the border
                 labelText: 'Typing messages...',
@@ -236,9 +230,10 @@ Widget _bottomNavigationWidget(BuildContext context) {
         Container(
           height: 50,
           width: 50,
+          margin: const EdgeInsets.only(right: 10),
           alignment: Alignment.center,
           decoration: const BoxDecoration(color: Color.fromARGB(255, 102, 237, 255), shape: BoxShape.circle),
-          child: const Icon(Icons.send),
+          child: Icon(Icons.send_sharp, color: Theme.of(context).cardColor),
         )
       ],
     ),
