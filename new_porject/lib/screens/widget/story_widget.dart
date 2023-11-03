@@ -1,63 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
-class StoryContainer extends StatefulWidget {
-  final Widget icon;
-  final String imageUrl;
+class StoryContainer extends StatelessWidget {
+  Widget? icon;
+  Widget? imageUrl;
 
-  const StoryContainer({super.key, required this.icon, required this.imageUrl});
+  StoryContainer({super.key, required this.icon, required this.imageUrl});
 
-  @override
-  State<StoryContainer> createState() => _StoryContainerState();
-}
-
-class _StoryContainerState extends State<StoryContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(right: 10),
-      width: 45.0,
-      height: 45.0,
-      child: Stack(
-        children: [
-          Container(
-            width: 45.0,
-            height: 45.0,
-            decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: LinearGradient(
-                    colors: [Color.fromARGB(255, 35, 104, 160), Colors.cyan, Color.fromARGB(255, 102, 237, 255)],
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight)),
-          ),
-          Container(
-            width: 45.0,
-            height: 45.0,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.transparent,
-              border: Border.all(color: Colors.transparent, width: 2.0),
+        margin: const EdgeInsets.only(left: 10),
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          border: GradientBoxBorder(
+            gradient: LinearGradient(
+              colors: [Color.fromARGB(255, 35, 104, 160), Colors.cyan, Color.fromARGB(255, 102, 237, 255)],
             ),
-            child: Center(
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  widget.imageUrl.isNotEmpty
-                      ? Container(
-                          width: 37.0,
-                          height: 37.0,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(image: AssetImage(widget.imageUrl), fit: BoxFit.cover),
-                          ),
-                        )
-                      : const SizedBox.shrink(),
-                  widget.icon,
-                ],
-              ),
-            ),
+            width: 2,
           ),
-        ],
-      ),
-    );
+        ),
+        width: 55.0,
+        height: 55,
+        child: icon != null ? icon! : Center(child: imageUrl));
   }
 }

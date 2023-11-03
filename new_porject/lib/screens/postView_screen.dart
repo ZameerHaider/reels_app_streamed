@@ -25,11 +25,20 @@ class _PostViewScreenState extends State<PostViewScreen> {
   Widget build(BuildContext context) {
     final List<Widget> icons = [
       Icon(Icons.add_outlined, color: Theme.of(context).cardColor),
-      Icon(Icons.camera_outlined, color: Theme.of(context).cardColor),
-      Icon(Icons.shopping_bag_outlined, color: Theme.of(context).cardColor),
-      Icon(Icons.music_note_outlined, color: Theme.of(context).cardColor),
-      Icon(Icons.shopping_bag_outlined, color: Theme.of(context).cardColor),
-      Icon(Icons.music_note_outlined, color: Theme.of(context).cardColor),
+      Icon(Icons.search, color: Theme.of(context).cardColor),
+      Icon(Icons.notifications_active, color: Theme.of(context).cardColor),
+      Image.asset(
+        "assets/images/model-2911329_1280.jpg",
+        fit: BoxFit.contain,
+        height: 50,
+        width: 50,
+      ),
+      Image.asset("assets/images/model-2911329_1280.jpg", fit: BoxFit.contain),
+      // Icon(Icons.camera_outlined, color: Theme.of(context).cardColor),
+      // Icon(Icons.shopping_bag_outlined, color: Theme.of(context).cardColor),
+      // Icon(Icons.music_note_outlined, color: Theme.of(context).cardColor),
+      // Icon(Icons.shopping_bag_outlined, color: Theme.of(context).cardColor),
+      // Icon(Icons.music_note_outlined, color: Theme.of(context).cardColor),
     ];
     final provider = Provider.of<PostViewProvider>(context);
     return SafeArea(
@@ -48,13 +57,13 @@ class _PostViewScreenState extends State<PostViewScreen> {
               },
             ),
             SizedBox(
-              height: 55.0, // Adjust the height as needed
+              height: 90.0, // Adjust the height as needed
               child: ListView.builder(
                 padding: const EdgeInsets.only(top: 20),
                 scrollDirection: Axis.horizontal,
                 itemCount: icons.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return StoryContainer(icon: icons[index], imageUrl: '');
+                  return StoryContainer(icon: icons[index], imageUrl: icons[index]);
                 },
               ),
             ),
@@ -149,7 +158,7 @@ class _PostViewScreenState extends State<PostViewScreen> {
               ),
             ),
             Positioned(
-              top: 260,
+              top: 380,
               left: 308,
               child: Padding(
                 padding: const EdgeInsets.only(right: 10),
