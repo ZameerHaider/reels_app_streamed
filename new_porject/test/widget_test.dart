@@ -9,22 +9,75 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:new_porject/main.dart';
+import 'package:new_porject/provider/post_view_provider.dart';
+import 'package:new_porject/screens/make_offer/makeofferscreen.dart';
+import 'package:new_porject/screens/postView_screen.dart';
+import 'package:new_porject/screens/widget/bottom_nav_buttons.dart';
+import 'package:new_porject/screens/widget/rounded_button.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('MyApp Widget Test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Use the tester to interact with the widget and verify its state.
+    expect(find.byType(MaterialApp), findsOneWidget); // Ensure MaterialApp is found.
+    expect(find.byType(GestureDetector), findsOneWidget); // Ensure GestureDetector is found.
+    expect(find.text('Your App Title'), findsNothing); // Replace with your app title text.
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // You can add more test cases based on your app's behavior.
+  });
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+  testWidgets('MakeOfferScreen UI test', (WidgetTester tester) async {
+    await tester.pumpWidget(const MaterialApp(
+      home: MakeOfferScreen(),
+    ));
+
+    // Verify the presence of UI components in the MakeOfferScreen widget
+    expect(find.text('Abu Hamza'), findsOneWidget);
+    expect(find.text('Posted this item for sale'), findsOneWidget);
+    expect(find.byIcon(Icons.close), findsOneWidget);
+    expect(find.text('im interested to buy \n your product with counter offer'), findsOneWidget);
+    // Add more test cases as needed
+  });
+
+  testWidgets('PostViewScreen UI test', (WidgetTester tester) async {
+    final provider = PostViewProvider(); // Create a mock provider for testing
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: ChangeNotifierProvider(
+          create: (context) => provider,
+          child: const PostViewScreen(),
+        ),
+      ),
+    );
+
+    // Verify the presence of UI components in the PostViewScreen widget
+    expect(find.text('MacBook Air 2013'), findsOneWidget);
+    expect(find.text('AED 12,00'), findsOneWidget);
+    expect(find.text('View Website'), findsOneWidget);
+    expect(find.text('Dubai, United Arab Emirates'), findsOneWidget);
+    expect(find.byType(RoundedGradientButton), findsNWidgets(4));
+    expect(find.byType(MakeOfferScreen), findsOneWidget);
+    // Add more test cases as needed
+  });
+
+  testWidgets('PostViewScreen Bottom Navigation Test', (WidgetTester tester) async {
+    final provider = PostViewProvider(); // Create a mock provider for testing
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: ChangeNotifierProvider(
+          create: (context) => provider,
+          child: const PostViewScreen(),
+        ),
+      ),
+    );
+
+    // Verify the presence of UI components in the bottom navigation
+    expect(find.byType(CustomBottomNavigationBar), findsOneWidget);
+    // Add more test cases as needed
   });
 }

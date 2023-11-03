@@ -16,7 +16,7 @@ class _MakeOfferScreenState extends State<MakeOfferScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        bottomNavigationBar: _bottomNavigationWidget(context),
+        bottomNavigationBar: bottomNavigationWidget(context),
         backgroundColor: const Color.fromRGBO(29, 59, 133, 0.894),
         appBar: AppBar(
           toolbarHeight: 65,
@@ -196,7 +196,7 @@ class _MakeOfferScreenState extends State<MakeOfferScreen> {
   }
 }
 
-Widget _bottomNavigationWidget(BuildContext context) {
+Widget bottomNavigationWidget(BuildContext context) {
   bool _keyboardVisible = MediaQuery.of(context).viewInsets.bottom != 0;
   return AnimatedContainer(
     duration: const Duration(milliseconds: 200),
